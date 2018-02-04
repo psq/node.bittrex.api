@@ -182,7 +182,7 @@ var NodeBittrexApi = function() {
     if (force) {
       try { wsclient.end(); } catch (e) {}
     }
-    
+
     if (!websocketWatchDog) {
       websocketWatchDog = setInterval(function() {
         if (!wsclient) {
@@ -198,7 +198,7 @@ var NodeBittrexApi = function() {
         ) {
           var now = (new Date()).getTime();
           var diff = now - websocketLastMessage;
-  
+
           if (diff > 60 * 1000) {
             ((opts.verbose) ? console.log('Websocket Watch Dog: Websocket has not received communication for over 1 minute. Forcing reconnection. Ruff!') : '');
             connectws(callback, true);
@@ -309,7 +309,7 @@ var NodeBittrexApi = function() {
       if (callback) {
         callback(wsclient);
       }
-      
+
     });
 
     return wsclient;
@@ -464,6 +464,6 @@ var NodeBittrexApi = function() {
       publicApiCall(opts.baseUrlv2 + '/pub/currencies/GetBTCPrice', callback, options);
     },
   };
-}();
+};
 
 module.exports = NodeBittrexApi;

@@ -1,3 +1,33 @@
+Fork Notes
+----
+
+this is forked from "original" Bittrex version so you can instantiate multiple versions of the api with separate keys.
+
+so instead of
+
+```
+var bittrex = require('node-bittrex-api');
+bittrex.options({
+  'apikey' : API_KEY,
+  'apisecret' : API_SECRET,
+});
+```
+
+you can use
+```
+var bittrex1 = require('node-bittrex-api')()
+bittrex.options({
+  'apikey' : API_KEY1,
+  'apisecret' : API_SECRET1,
+})
+var bittrex2 = require('node-bittrex-api')()
+bittrex.options({
+  'apikey' : API_KEY2,
+  'apisecret' : API_SECRET2,
+})
+
+```
+
 !Important! Note
 ----
 
@@ -231,7 +261,7 @@ bittrex.websockets.client(function(client) {
   client.serviceHandlers.reconnecting = function (message) {
     return true; // set to true stops reconnect/retrying
   }
-  
+
   client.serviceHandlers.messageReceived = function (message) {
     console.log(message); // the messages received must be parsed as json first e.g. via jsonic(message.utf8Data)
   }
